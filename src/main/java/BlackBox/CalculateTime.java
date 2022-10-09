@@ -108,7 +108,8 @@ public class CalculateTime {
                 } else {
                     result.setHour(hour += 2);
                     result.setMinute(minute -= 30);
-                    if (Objects.equals(time.getType(), "AM")) result.setType("PM");
+                    if (Objects.equals(time.getType(), "AM"))
+                        result.setType("PM");
                     else result.setType("AM");
                 }
             } else if (time.getHour() == 11) {
@@ -119,8 +120,10 @@ public class CalculateTime {
                     result.setHour(1);
                     result.setMinute(minute -= 30);
                 }
-                if (Objects.equals(time.getType(), "AM")) result.setType("PM");
-                else result.setType("AM");
+                if (Objects.equals(time.getType(), "AM"))
+                    result.setType("PM");
+                else
+                    result.setType("AM");
             }
         }
         return result;
