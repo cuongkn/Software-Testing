@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculateTimeTest {
+class CalculateTimeBlackBoxTest {
 
     // (Strong) Boundary Value Testing
 
@@ -291,5 +291,58 @@ class CalculateTimeTest {
                 () -> {
                     calculate.calculate_time(new Time(13,66,-1,"XM"));
                 });
+    }
+}
+
+class CalculateTimeCFGTest {
+    @Test
+    void calculateEndTimeOf_19_04_13_AM() {
+        CalculateTime calculate = new CalculateTime();
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    calculate.calculate_time(new Time(19,04,13,"AM"));
+                });
+    }
+
+    @Test
+    void calculateEndTimeOf_12_24_21_PM() {
+        CalculateTime calculate = new CalculateTime();
+        assertEquals(new Time(1,54,21,"PM"),calculate.calculate_time(new Time(12,24,21,"PM")));
+    }
+
+    @Test
+    void calculateEndTimeOf_8_46_35_PM() {
+        CalculateTime calculate = new CalculateTime();
+        assertEquals(new Time(10,16,35,"PM"),calculate.calculate_time(new Time(8,46,35,"PM")));
+    }
+
+    @Test
+    void calculateEndTimeOf_10_14_26_AM() {
+        CalculateTime calculate = new CalculateTime();
+        assertEquals(new Time(11,44,26,"AM"),calculate.calculate_time(new Time(10,14,26,"AM")));
+    }
+
+    @Test
+    void calculateEndTimeOf_10_49_33_AM() {
+        CalculateTime calculate = new CalculateTime();
+        assertEquals(new Time(12,19,33,"PM"),calculate.calculate_time(new Time(10,49,33,"AM")));
+    }
+
+    @Test
+    void calculateEndTimeOf_10_59_46_PM() {
+        CalculateTime calculate = new CalculateTime();
+        assertEquals(new Time(12,29,46,"AM"),calculate.calculate_time(new Time(10,59,46,"PM")));
+    }
+
+    @Test
+    void calculateEndTimeOf_11_13_21_AM() {
+        CalculateTime calculate = new CalculateTime();
+        assertEquals(new Time(12,43,21,"PM"),calculate.calculate_time(new Time(11,13,21,"AM")));
+    }
+
+    @Test
+    void calculateEndTimeOf_11_43_59_PM() {
+        CalculateTime calculate = new CalculateTime();
+        assertEquals(new Time(1,13,59,"AM"),calculate.calculate_time(new Time(11,43,59,"PM")));
     }
 }
