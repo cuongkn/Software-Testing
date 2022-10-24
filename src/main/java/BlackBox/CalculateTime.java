@@ -87,7 +87,11 @@ public class CalculateTime {
         result.setType(time.getType());
         result.setSecond(time.getSecond());
 
-        if (time.getHour() < 1 || time.getHour() > 12 || time.getMinute() < 0 || time.getMinute() > 59 || time.getSecond() < 0 || time.getSecond() > 59 || (!Objects.equals(time.getType(), "AM") && !Objects.equals(time.getType(), "PM"))) {
+        if (time.getHour() < 1 || time.getHour() > 12
+                || time.getMinute() < 0 || time.getMinute() > 59
+                || time.getSecond() < 0 || time.getSecond() > 59
+                || (!Objects.equals(time.getType(), "AM")
+                && !Objects.equals(time.getType(), "PM"))) {
             throw new IllegalArgumentException("Time not valid");
         } else {
             if (time.getHour() == 12) time.setHour(0);
@@ -112,7 +116,7 @@ public class CalculateTime {
                         result.setType("PM");
                     else result.setType("AM");
                 }
-            } else if (time.getHour() == 11) {
+            } else {
                 if (time.getMinute() < 30) {
                     result.setHour(++hour);
                     result.setMinute(minute += 30);
